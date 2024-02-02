@@ -34,5 +34,9 @@ def mongraphique():
 def mongraphiquehisto():
     return render_template("graphiquehisto.html")
 
+@app.route("/rapportcol/")
+def mongraphiquehisto():
+    return render_template("graphiquecol.html")
+
 if __name__ == "__main__":
   app.run(debug=True)
