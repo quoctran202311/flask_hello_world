@@ -71,7 +71,7 @@ def Readfichenom(nom):
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
 
-@app.route('/search_client/', methods=['GET', 'POST'])
+@app.route('/search_client', methods=['GET', 'POST'])
 def Searchfiche():
 
     # nom = input("Nom client a chercher: ");
@@ -88,6 +88,26 @@ def Searchfiche():
             return "No client found with that name."
     else:     
        return "Method not allowed for..."
+
+@app.route('/add_client', methods=['POST'])
+def add_client():
+    if request.method == 'POST':
+        nom = request.form['nom']
+        prenom = request.form['prenom']
+        adresse = request.form['adresse']
+
+        # Connexion à la base de données
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+
+        # Insertion des données dans la base de données
+        if conn is not None:
+            query = f"INSERT INTO clients (nom, prenom, adresse) VALUES ('{nom}', '{prenom}', '{adresse}')"
+            execute_query(conn, query)
+            conn.close()
+            return redirect('/')
+        else:
+            return 'Erreur de connexion à la base de données'
 
 if __name__ == "__main__":
   app.run(debug=True)
