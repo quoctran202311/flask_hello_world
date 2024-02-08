@@ -108,7 +108,7 @@ def ajouter_client():
             return 'Erreur de connexion à la base de données'
 
         # Rediriger vers la page de consultation des clients après l'ajout
-        return redirect(url_for('consultation'))
+        return redirect(url_for('https://tran.alwaysdata.net/consultation/'))
 
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('create_data.html')
