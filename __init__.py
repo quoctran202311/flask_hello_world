@@ -105,7 +105,7 @@ def ajouter_client():
         conn.close()
 
         # Rediriger vers la page de consultation des clients après l'ajout
-        return redirect(url_for('ReadBDD'))
+        return redirect(url_for('consultation'))
 
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('create_data.html')
