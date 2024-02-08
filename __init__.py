@@ -60,7 +60,7 @@ def Readfiche(post_id):
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
 
-@app.route('/search_client/', methods=['POST'])
+@app.route('/search_client/', methods=['GET', 'POST'])
 def Searchfiche():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
