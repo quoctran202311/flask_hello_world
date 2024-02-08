@@ -1,5 +1,5 @@
 from flask import Flask, render_template_string, render_template, jsonify
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask import json
 from urllib.request import urlopen
 import sqlite3
