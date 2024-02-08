@@ -89,7 +89,7 @@ def Searchfiche():
     else:     
        return "Method not allowed for..."
 
-@app.route('/add_client', methods=['POST'])
+@app.route('/add_client/', methods=['GET', 'POST'])
 def add_client():
     if request.method == 'POST':
         nom = request.form['nom']
@@ -105,9 +105,15 @@ def add_client():
             query = f"INSERT INTO clients (nom, prenom, adresse) VALUES ('{nom}', '{prenom}', '{adresse}')"
             execute_query(conn, query)
             conn.close()
-            return redirect('/')
+            # Rediriger vers la page de consultation des clients après l'ajout
+            return redirect(url_for('consultation'))
+            # return redirect('/')
         else:
             return 'Erreur de connexion à la base de données'
+
+    # Si la méthode est GET, simplement rendre le template du formulaire
+    return render_template('create_data.html')
+
 
 if __name__ == "__main__":
   app.run(debug=True)
