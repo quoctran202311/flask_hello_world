@@ -89,31 +89,26 @@ def Searchfiche():
     else:     
        return "Method not allowed for..."
 
-@app.route('/add_client/', methods=['GET', 'POST'])
-def add_client():
+@app.route('/ajouter_client/', methods=['GET', 'POST'])
+def ajouter_client():
     if request.method == 'POST':
+        # Récupérer les données du formulaire
         nom = request.form['nom']
         prenom = request.form['prenom']
         adresse = request.form['adresse']
 
-        # Connexion à la base de données
+        # Insérer les données dans la base de données (ici, je suppose que tu as une table 'clients')
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
+        cursor.execute('INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?)', (nom, prenom, adresse))
+        conn.commit()
+        conn.close()
 
-        # Insertion des données dans la base de données
-        if conn is not None:
-            query = f"INSERT INTO clients (nom, prenom, adresse) VALUES ('{nom}', '{prenom}', '{adresse}')"
-            execute_query(conn, query)
-            conn.close()
-            # Rediriger vers la page de consultation des clients après l'ajout
-            return redirect(url_for('consultation'))
-            # return redirect('/')
-        else:
-            return 'Erreur de connexion à la base de données'
+        # Rediriger vers la page de consultation des clients après l'ajout
+        return redirect(url_for('ReadBDD'))
 
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('create_data.html')
-
 
 if __name__ == "__main__":
   app.run(debug=True)
