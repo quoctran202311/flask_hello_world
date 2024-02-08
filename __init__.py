@@ -71,8 +71,10 @@ def Searchfiche():
         cursor.execute('SELECT * FROM clients WHERE nom = ?', (nom,))
         data = cursor.fetchall()
         conn.close()
-        # Rendre le template HTML et transmettre les données
-        return render_template('read_data.html', data=data)
+        if data:
+            return render_template('read_data.html', data=data)
+        else:
+            return "No client found with that name."
     else:     
        return "Method not allowed for..."
 
