@@ -73,23 +73,29 @@ def ReadFicheNom(nom):
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
 
-@app.route('/search_client', methods=['GET', 'POST'])
-def Searchfiche():
-
-    # nom = input("Nom client a chercher: ");
+@app.route('/chercher_client/', methods=['GET', 'POST'])
+def chercher_client():
     if request.method == 'POST':
+        # Récupérer les données du formulaire
         nom = request.form['nom']
+
+        # ici, je suppose que tu as une table 'clients'
         conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
-        cursor.execute('SELECT * FROM clients WHERE nom = ?', (nom,))
-        data = cursor.fetchall()
-        conn.close()
-        if data:
+        if conn is not None:
+            cursor.execute('SELECT * FROM clients WHERE nom LIKE ?', ('%' + nom + '%',))
+            data = cursor.fetchall()
+            conn.close()
+            # Rendre le template HTML et transmettre les données
             return render_template('read_data.html', data=data)
         else:
-            return "No client found with that name."
-    else:     
-       return "Method not allowed for..."
+            return 'Erreur de connexion à la base de données'
+
+    # Rediriger vers la page de consultation des clients après
+    return redirect(url_for('/'))
+
+    # Si la méthode est GET, simplement rendre le template du formulaire
+    #return render_template('create_data.html')
 
 @app.route('/ajouter_client/', methods=['GET', 'POST'])
 def ajouter_client():
