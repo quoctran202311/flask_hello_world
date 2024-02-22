@@ -3,8 +3,21 @@ from flask import Flask, render_template, request, redirect
 from flask import json
 from urllib.request import urlopen
 import sqlite3
+from flask_sqlalchemy import SQLAlchemy
+
                                                                                                                                        
-app = Flask(__name__)                                                                                                                  
+app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://'tran_admin':'adm@Alw202311'@mysql-tran.alwaysdata.net/tran_weeat'
+db = SQLAlchemy(app)
+
+app.config['MYSQL_HOST'] = 'mysql-tran.alwaysdata.net'
+app.config['MYSQL_USER'] = 'tran_admin'
+app.config['MYSQL_PASSWORD'] = 'adm@Alw202311'
+app.config['MYSQL_DB'] = 'tran_weeat'
+ 
+mysql = MySQL(app)
+
                                                                                                                                        
 @app.route('/')
 def hello_world():
