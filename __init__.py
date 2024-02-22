@@ -3,9 +3,11 @@ from flask import Flask, render_template, request, redirect
 from flask import json
 from urllib.request import urlopen
 import sqlite3
+import mysql.connector
 #from flask_sqlalchemy import SQLAlchemy
-from flask_mysqldb import MySQL
-                                                                                                                                       
+#from flask_mysqldb import MySQL
+
+
 app = Flask(__name__)
 
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://tran_admin:adm\@Alw202311@mysql-tran.alwaysdata.net/tran_weeat'
