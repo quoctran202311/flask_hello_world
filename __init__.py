@@ -137,6 +137,7 @@ def lecture():
     if not est_authentifie():
         # Rediriger vers la page d'authentification si l'utilisateur n'est pas authentifié
         return redirect(url_for('authentification'))
+        
 
   # Si l'utilisateur est authentifié
     return "<h2>Bravo, vous êtes authentifié</h2>"
@@ -155,6 +156,25 @@ def authentification():
             return render_template('formulaire_authentification.html', error=True)
 
     return render_template('formulaire_authentification.html', error=False)
+
+
+@app.route('/client_Read')
+def display_client():
+
+    # Creating a connection cursor
+    cursor = mysql.connection.cursor()
+    # clients = User.query.all()
+    cursor.execute('SELECT * FROM Clients;')
+    data = cursor.fetchall()
+    conn.close()
+    
+    # Closing the cursor
+    cursor.close()
+
+    # Rendre le template HTML et transmettre les données
+    # return render_template('users.html', users=clients)
+    return render_template('/client_Read.html', data=data)
+
 
 if __name__ == "__main__":
   app.run(debug=True)
