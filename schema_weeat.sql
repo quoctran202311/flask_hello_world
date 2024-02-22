@@ -60,10 +60,8 @@ CREATE TABLE IF NOT EXISTS Detail_Commande(
     PrixTotal INT NOT NULL,
     RefCommandeID INT NOT NULL,
     RefProduitID INT NOT NULL,
-    KEY fk_RefCommandeID (RefCommandeID),
-    CONSTRAINT fk_RefCommandeID FOREIGN KEY (RefCommandeID) REFERENCES Commandes(CommandeID),
-    KEY fk_RefProduitID (RefProduitID),
-    CONSTRAINT fk_RefProduitID FOREIGN KEY (RefProduitID) REFERENCES Produits(ProduitID)
+    FOREIGN KEY (RefCommandeID) REFERENCES "Commandes"(CommandeID),
+    FOREIGN KEY (RefProduitID) REFERENCES "Produits"(ProduitID)
 );
 
 
@@ -74,8 +72,6 @@ CREATE TABLE IF NOT EXISTS Livraisons(
     AdresseLivraison TEXT NOT NULL,
     RefLivreurID INT NOT NULL,
     RefDetailID INT NOT NULL,
-    KEY fk_RefDetailID (RefDetailID),
-    CONSTRAINT fk_RefDetailID FOREIGN KEY(RefDetailID) REFERENCES Detail_Commande(DetailID),
-    KEY fk_RefLivreurID (RefLivreurID),
-    CONSTRAINT fk_RefLivreurID FOREIGN KEY(RefLivreurID) REFERENCES Livreurs(LivreurID)
+    FOREIGN KEY(RefDetailID) REFERENCES "Detail_Commande"(DetailID),
+    FOREIGN KEY(RefLivreurID) REFERENCES "Livreurs"(LivreurID)
 );
