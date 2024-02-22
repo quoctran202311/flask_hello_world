@@ -8,14 +8,13 @@ from flask_mysqldb import MySQL
                                                                                                                                        
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://'tran_admin':'adm@Alw202311'@mysql-tran.alwaysdata.net/tran_weeat'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://tran_admin:adm\@Alw202311@mysql-tran.alwaysdata.net/tran_weeat'
 db = SQLAlchemy(app)
 
 app.config['MYSQL_HOST'] = 'mysql-tran.alwaysdata.net'
 app.config['MYSQL_USER'] = 'tran_admin'
 app.config['MYSQL_PASSWORD'] = 'adm@Alw202311'
 app.config['MYSQL_DB'] = 'tran_weeat'
- 
 mysql = MySQL(app)
 
                                                                                                                                        
@@ -163,10 +162,10 @@ def display_client():
 
     # Creating a connection cursor
     cursor = mysql.connection.cursor()
-    # clients = User.query.all()
+    # data = User.query.all()
     cursor.execute('SELECT * FROM Clients;')
     data = cursor.fetchall()
-    conn.close()
+    #conn.close()
     
     # Closing the cursor
     cursor.close()
