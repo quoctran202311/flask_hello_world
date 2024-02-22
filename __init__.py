@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect
 from flask import json
 from urllib.request import urlopen
 import sqlite3
-import mysql.connector
+from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
