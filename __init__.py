@@ -3,29 +3,9 @@ from flask import Flask, render_template, request, redirect
 from flask import json
 from urllib.request import urlopen
 import sqlite3
-import mysql.connector
-#from flask_sqlalchemy import SQLAlchemy
-#from flask_mysqldb import MySQL
 
 
 app = Flask(__name__)
-
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://tran_admin:adm\@Alw202311@mysql-tran.alwaysdata.net/tran_weeat'
-#db = SQLAlchemy(app)
-
-app.config['MYSQL_HOST'] = 'mysql-tran.alwaysdata.net'
-app.config['MYSQL_USER'] = 'tran_admin'
-app.config['MYSQL_PASSWORD'] = 'adm@Alw202311'
-app.config['MYSQL_DB'] = 'tran_weeat'
-#mysql = MySQL(app)
-
-# Configure MySQL connection
-mysql_connection = mysql.connector.connect(
-    host="mysql-tran.alwaysdata.net",
-    user="tran_admin",
-    password="adm@Alw202311",
-    database="tran_weeat"
-)
 
 
 @app.route('/')
@@ -135,6 +115,7 @@ def ajouter_client():
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('create_data.html')
 
+
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions (à cacher par la suite)
 
 # Fonction pour créer une entrée "authentifie" dans la session de l'utilisateur
@@ -147,7 +128,6 @@ def lecture():
         # Rediriger vers la page d'authentification si l'utilisateur n'est pas authentifié
         return redirect(url_for('authentification'))
         
-
   # Si l'utilisateur est authentifié
     return "<h2>Bravo, vous êtes authentifié</h2>"
 
@@ -165,26 +145,6 @@ def authentification():
             return render_template('formulaire_authentification.html', error=True)
 
     return render_template('formulaire_authentification.html', error=False)
-
-
-@app.route('/client_Read')
-def display_client():
-
-    # Creating a connection cursor
-  
-    #cursor = mysql.connection.cursor()
-    cursor = mysql_connection.cursor()
-    # data = User.query.all()
-    cursor.execute('SELECT * FROM Clients;')
-    data = cursor.fetchall()
-    #conn.close()
-    
-    # Closing the cursor
-    cursor.close()
-
-    # Rendre le template HTML et transmettre les données
-    # return render_template('users.html', users=clients)
-    return render_template('/client_Read.html', data=data)
 
 
 if __name__ == "__main__":
