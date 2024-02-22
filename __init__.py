@@ -8,6 +8,17 @@ import mysql.connector
 
 app = Flask(__name__)
 
+# Configure MySQL connection
+mysql_connect = mysql.connector.connect(
+    host="mysql-tran.alwaysdata.net",
+    user="tran_admin",
+    password="adm@Alw202311",
+    database="tran_weeat"
+)
+
+# Create a cursor to interact with the database
+cursor = mysql_connect.cursor()
+
 
 @app.route('/')
 def hello_world():
