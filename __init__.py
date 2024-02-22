@@ -164,7 +164,8 @@ def authentification():
 def get_users():
     cursor.execute("SELECT * FROM Clients")
     data = cursor.fetchall()
-    return jsonify(data)
+    #return jsonify(data)
+    return render_template('/client_Read.html', data=data)
 
 
 if __name__ == "__main__":
