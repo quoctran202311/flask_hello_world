@@ -147,16 +147,40 @@ def authentification():
     return render_template('formulaire_authentification.html', error=False)
 
 
-@app.route("/mspr_consult_client/")
+@app.route("/mspr_consult_Client/")
 def Afficher_Client():
     conn = sqlite3.connect('weeat.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM clients;')
+    cursor.execute('SELECT * FROM Clients;')
     data = cursor.fetchall()
     conn.close()
     
     # Rendre le template HTML et transmettre les données
     return render_template('mspr_Afficher_Client.html', data=data)
+
+
+@app.route("/mspr_consult_Livreur/")
+def Afficher_Livreur():
+    conn = sqlite3.connect('weeat.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM Livreurs;')
+    data = cursor.fetchall()
+    conn.close()
+    
+    # Rendre le template HTML et transmettre les données
+    return render_template('mspr_Afficher_Livreur.html', data=data)
+
+
+@app.route("/mspr_consult_Produit/")
+def Afficher_Produit():
+    conn = sqlite3.connect('weeat.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM Produits;')
+    data = cursor.fetchall()
+    conn.close()
+    
+    # Rendre le template HTML et transmettre les données
+    return render_template('mspr_Afficher_Produit.html', data=data)
 
 
 if __name__ == "__main__":
