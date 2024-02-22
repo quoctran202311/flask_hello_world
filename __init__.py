@@ -8,8 +8,8 @@ from flask_mysqldb import MySQL
                                                                                                                                        
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://tran_admin:adm\@Alw202311@mysql-tran.alwaysdata.net/tran_weeat'
-db = SQLAlchemy(app)
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://tran_admin:adm\@Alw202311@mysql-tran.alwaysdata.net/tran_weeat'
+#db = SQLAlchemy(app)
 
 app.config['MYSQL_HOST'] = 'mysql-tran.alwaysdata.net'
 app.config['MYSQL_USER'] = 'tran_admin'
