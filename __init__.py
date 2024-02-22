@@ -159,14 +159,5 @@ def authentification():
     return render_template('formulaire_authentification.html', error=False)
 
 
-# Define routes - Display 
-@app.route('/users', methods=['GET'])
-def get_users():
-    cursor.execute("SELECT * FROM Clients")
-    data = cursor.fetchall()
-    #return jsonify(data)
-    return render_template('/client_Read.html', data=data)
-
-
 if __name__ == "__main__":
   app.run(debug=True)
