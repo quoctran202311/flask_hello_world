@@ -91,13 +91,15 @@ def chercherClient():
             return render_template('read_data.html', data=data)
         else:
             return 'Erreur de connexion à la base de données'
-
+    else:
+        return render_template('read_data.html', data=data)
+        
     # Rendre le template HTML et transmettre les données
     return render_template('search_data.html', data=data)
 
 
 @app.route('/ajouter_client/', methods=['GET', 'POST'])
-def ajouter_client():
+def ajouterClient():
     if request.method == 'POST':
         # Récupérer les données du formulaire
         nom = request.form['nom']
