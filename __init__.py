@@ -75,9 +75,10 @@ def ReadFicheNom(nom):
 
 @app.route('/chercher_client', methods=['GET', 'POST'])
 def chercherClient():
+    data = []  # Define data as an empty list
     if request.method == 'POST':
         # Récupérer les données du formulaire
-        nom = request.form['nom'] if request.method == 'POST' else ''
+        nom = request.form['nom']
 
         # ici, je suppose que tu as une table 'clients'
         conn = sqlite3.connect('database.db')
@@ -92,7 +93,7 @@ def chercherClient():
             return 'Erreur de connexion à la base de données'
 
     # Rendre le template HTML et transmettre les données
-    return render_template('search_data.html')
+    return render_template('search_data.html', data=data)
 
 
 @app.route('/ajouter_client/', methods=['GET', 'POST'])
