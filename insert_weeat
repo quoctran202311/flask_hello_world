@@ -6,7 +6,7 @@ INSERT INTO `Clients` (`Nom`, `Prenom`, `Email`, `Telephone`) VALUES
 
 
 ; -- USE `tran_weeat`;
-INSERT INTO `Livreurs` (`Nom`, `Prenom`, `Telephone`) VALUES; -- ; -- 
+INSERT INTO `Livreurs` (`Nom`, `Prenom`, `Telephone`) VALUES 
 	('LivreurNOM_1', 'LivreurPrenom_1', '0123456711'),
 	('LivreurNOM_2', 'LivreurPrenom_2', '0123456722'),
 	('LivreurNOM_3', 'LivreurPrenom_3', '0123456733');
