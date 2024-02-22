@@ -3,21 +3,9 @@ from flask import Flask, render_template, request, redirect
 from flask import json
 from urllib.request import urlopen
 import sqlite3
-from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-
-# Configure MySQL connection
-mysql_connection = mysql.connector.connect(
-    host="mysql-tran.alwaysdata.net",
-    user="tran_admin",
-    password="adm@Alw202311",
-    database="tran_weeat"
-)
-
-# Create a cursor to interact with the database
-cursor = mysql_connection.cursor()
 
 
 @app.route('/')
@@ -157,6 +145,18 @@ def authentification():
             return render_template('formulaire_authentification.html', error=True)
 
     return render_template('formulaire_authentification.html', error=False)
+
+
+@app.route("/mspr_consult_client/")
+def Afficher_Client():
+    conn = sqlite3.connect('weeat.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM clients;')
+    data = cursor.fetchall()
+    conn.close()
+    
+    # Rendre le template HTML et transmettre les données
+    return render_template('mspr_Afficher_Client.html', data=data)
 
 
 if __name__ == "__main__":
