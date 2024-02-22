@@ -2,7 +2,7 @@
 ; -- sqlite3 Test.db -init schema_weeat.sql
 ; -- sqlite3 Test.db < insert_data.sql
 
-CREATE DATABASE IF NOT EXISTS weeat;
+; -- CREATE DATABASE IF NOT EXISTS weeat;
 ; -- USE weeat;
 
 DROP TABLE IF EXISTS Livraisons;
@@ -48,8 +48,7 @@ CREATE TABLE IF NOT EXISTS Commandes(
     DateCommande date NOT NULL,
     Statut TEXT NOT NULL,
     RefClientID INTEGER NOT NULL,
-    KEY fk_RefClientID (RefClientID),
-    CONSTRAINTEGER fk_RefClientID FOREIGN KEY (RefClientID) REFERENCES Clients(ClientID)
+    FOREIGN KEY (RefClientID) REFERENCES "Clients"(ClientID)
 );
 
 
