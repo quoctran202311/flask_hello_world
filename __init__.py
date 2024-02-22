@@ -17,9 +17,17 @@ app.config['MYSQL_HOST'] = 'mysql-tran.alwaysdata.net'
 app.config['MYSQL_USER'] = 'tran_admin'
 app.config['MYSQL_PASSWORD'] = 'adm@Alw202311'
 app.config['MYSQL_DB'] = 'tran_weeat'
-mysql = MySQL(app)
+#mysql = MySQL(app)
 
-                                                                                                                                       
+# Configure MySQL connection
+mysql_connection = mysql.connector.connect(
+    host="mysql-tran.alwaysdata.net",
+    user="tran_admin",
+    password="adm@Alw202311",
+    database="tran_weeat"
+)
+
+
 @app.route('/')
 def hello_world():
     return render_template('hello.html')
@@ -163,7 +171,9 @@ def authentification():
 def display_client():
 
     # Creating a connection cursor
-    cursor = mysql.connection.cursor()
+  
+    #cursor = mysql.connection.cursor()
+    cursor = mysql_connection.cursor()
     # data = User.query.all()
     cursor.execute('SELECT * FROM Clients;')
     data = cursor.fetchall()
