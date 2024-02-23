@@ -1,13 +1,13 @@
 ; -- Projet : POEC - MSPR - WeEat
-; -- Database weeat
+; -- Database weeat.db
 ; -- Certains datatypes et autres ont ete rendus compatibles pour SQLite(3)
 ; -- Creation en ligne de commande
-; -- (ou) sqlite3 Test.db -init schema_weeat.sql
-; -- (ou) sqlite3 Test.db ".read schema_weeat.sql"
-; -- (ou) sqlite3 Test.db < insert_data.sql
+; -- (ou) sqlite3 weeat.db -init schema_weeat.sql
+; -- (ou) sqlite3 weeat.db ".read schema_weeat.sql"
+; -- (ou) sqlite3 weeat.db < insert_data.sql
 
 ; -- CREATE DATABASE IF NOT EXISTS weeat;
-; -- USE weeat;
+; -- USE weeat.db;
 
 ; -- Nouvelle livraison - Suppression des anciennes tables 
 
