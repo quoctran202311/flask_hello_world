@@ -1,4 +1,4 @@
-name: Sauvegarde Base de données
+name: Quoc - Sauvegarde Base de données
 on: push
 jobs:
   Connexion:
