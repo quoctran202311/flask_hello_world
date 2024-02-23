@@ -1,9 +1,15 @@
-; -- sqlite3 Test.db ".read schema_weeat.sql"
-; -- sqlite3 Test.db -init schema_weeat.sql
-; -- sqlite3 Test.db < insert_data.sql
+; -- Projet : POEC - MSPR - WeEat
+; -- Database weeat
+; -- Certains datatypes et autres ont ete rendus compatibles pour SQLite(3)
+; -- Creation en ligne de commande
+; -- (ou) sqlite3 Test.db -init schema_weeat.sql
+; -- (ou) sqlite3 Test.db ".read schema_weeat.sql"
+; -- (ou) sqlite3 Test.db < insert_data.sql
 
 ; -- CREATE DATABASE IF NOT EXISTS weeat;
 ; -- USE weeat;
+
+; -- Nouvelle livraison - Suppression des anciennes tables 
 
 DROP TABLE IF EXISTS Livraisons;
 DROP TABLE IF EXISTS Detail_Commande;
@@ -12,6 +18,8 @@ DROP TABLE IF EXISTS Clients;
 DROP TABLE IF EXISTS Produits;
 DROP TABLE IF EXISTS Livreurs;
 
+
+; -- Nouvelle livraison - Recreation des tables 
 
 CREATE TABLE IF NOT EXISTS Clients(
     ClientID INTEGER PRIMARY KEY AUTOINCREMENT,
