@@ -6,7 +6,7 @@
 ; -- (ou) sqlite3 weeat.db ".read insert_weeat.sql"
 ; -- (ou) sqlite3 weeat.db < insert_weeat.sql
 
-; -- USE weeat;
+; -- USE weeat.db;
 
 ; -- Injection des donnees 
 
