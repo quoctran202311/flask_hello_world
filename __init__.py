@@ -201,7 +201,7 @@ def mspr_Ajouter_Client():
         conn = sqlite3.connect('weeat.db')
         cursor = conn.cursor()
         if conn is not None:
-            cursor.execute('INSERT INTO clients (Nom, Prenom, Email, Telephone) VALUES (?, ?, ?)', (nom, prenom, email, telephone))
+            cursor.execute('INSERT INTO clients (Nom, Prenom, Email, Telephone) VALUES (?, ?, ?, ?)', (nom, prenom, email, telephone))
             conn.commit()
             conn.close()
         else:
