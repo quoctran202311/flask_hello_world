@@ -99,7 +99,7 @@ def chercherClient():
 
 
 @app.route('/t_ajouter_client/', methods=['GET', 'POST'])
-def ajouterClient():
+def t_ajouter_client():
     if request.method == 'POST':
         # Récupérer les données du formulaire
         nom = request.form['nom']
