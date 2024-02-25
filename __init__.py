@@ -191,7 +191,7 @@ def Afficher_Produit():
 
 
 @app.route('/mspr_Ajouter_Client', methods=['GET', 'POST'])
-def Ajouter_Client():
+def mspr_Ajouter_Client():
     if request.method == 'POST':
         # Récupérer les données du formulaire
         nom = request.form['nom']
