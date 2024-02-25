@@ -98,7 +98,7 @@ def chercherClient():
     return render_template('search_data.html', data=data)
 
 
-@app.route('/ajouter_client/', methods=['GET', 'POST'])
+@app.route('/t_ajouter_client/', methods=['GET', 'POST'])
 def ajouter_client():
     if request.method == 'POST':
         # Récupérer les données du formulaire
