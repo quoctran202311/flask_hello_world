@@ -76,7 +76,7 @@ def ReadFicheNom(nom):
 @app.route('/t_chercher_client', methods=['GET', 'POST'])
 def chercher_Client():
     data = []  # Define data as an empty list
-    if request.method == 'GET':
+    if request.method == 'POST':
         # Récupérer les données du formulaire
         nom = request.form['nom']
 
