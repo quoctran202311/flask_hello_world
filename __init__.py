@@ -74,7 +74,7 @@ def ReadFicheNom(nom):
     return render_template('read_data.html', data=data)
 
 @app.route('/t_chercher_client', methods=['GET', 'POST'])
-def chercher_Client():
+def chercher_client():
     data = []  # Define data as an empty list
     if request.method == 'POST':
         # Récupérer les données du formulaire
@@ -91,8 +91,6 @@ def chercher_Client():
             return render_template('read_data.html', data=data)
         else:
             return 'Erreur de connexion à la base de données'
-    else:
-        return render_template('read_data.html', data=data)
         
     # Rendre le template HTML et transmettre les données
     return render_template('search_data.html', data=data)
