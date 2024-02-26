@@ -197,7 +197,7 @@ def mspr_Ajouter_Client():
         email = request.form['email']
         telephone = request.form['telephone']
 
-        # Insérer les données dans la base de données (ici, je suppose que tu as une table 'clients')
+        # Insérer les données dans la table 'clients'
         conn = sqlite3.connect('weeat.db')
         cursor = conn.cursor()
         if conn is not None:
@@ -222,11 +222,11 @@ def mspr_Ajouter_Livreur():
         prenom = request.form['prenom']
         telephone = request.form['telephone']
 
-        # Insérer les données dans la base de données (ici, je suppose que tu as une table 'clients')
+        # Insérer les données dans la table 'Livreurs'
         conn = sqlite3.connect('weeat.db')
         cursor = conn.cursor()
         if conn is not None:
-            cursor.execute('INSERT INTO clients (Nom, Prenom, Telephone) VALUES (?, ?, ?)', (nom, prenom, telephone))
+            cursor.execute('INSERT INTO Livreurs (Nom, Prenom, Telephone) VALUES (?, ?, ?)', (nom, prenom, telephone))
             conn.commit()
             conn.close()
         else:
@@ -237,6 +237,32 @@ def mspr_Ajouter_Livreur():
 
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('mspr_Ajouter_Livreur.html')
+
+
+@app.route('/mspr_Ajouter_Produit', methods=['GET', 'POST'])
+def mspr_Ajouter_Produit():
+    if request.method == 'POST':
+        # Récupérer les données du formulaire
+        nom = request.form['nom']
+        prenom = request.form['prenom']
+        prix = request.form['prix']
+        stock = request.form['stock']
+
+        # Insérer les données dans la table 'Produits'
+        conn = sqlite3.connect('weeat.db')
+        cursor = conn.cursor()
+        if conn is not None:
+            cursor.execute('INSERT INTO Produits (Nom, Description, Prix, Stock) VALUES (?, ?, ?)', (nom, description, prix, stock))
+            conn.commit()
+            conn.close()
+        else:
+            return 'Erreur de connexion à la base de données'
+
+        # Rediriger vers la page de consultation des clients après l'ajout
+        return redirect(url_for('/'))
+
+    # Si la méthode est GET, simplement rendre le template du formulaire
+    return render_template('mspr_Ajouter_Produit.html')
 
 
 if __name__ == "__main__":
