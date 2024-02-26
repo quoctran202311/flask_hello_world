@@ -252,7 +252,7 @@ def mspr_Ajouter_Produit():
         conn = sqlite3.connect('weeat.db')
         cursor = conn.cursor()
         if conn is not None:
-            cursor.execute('INSERT INTO Produits (Nom, Description, Prix, Stock) VALUES (?, ?, ?)', (nom, description, prix, stock))
+            cursor.execute('INSERT INTO Produits (Nom, Description, Prix, Stock) VALUES (?, ?, ?, ?)', (nom, description, prix, stock))
             conn.commit()
             conn.close()
         else:
