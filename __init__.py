@@ -152,7 +152,7 @@ def authentification():
     return render_template('formulaire_authentification.html', error=False)
 
 
-@app.route("/mspr_consult_Client/")
+@app.route("/mspr_Consulter_Client")
 def Afficher_Client():
     conn = sqlite3.connect('weeat.db')
     cursor = conn.cursor()
@@ -164,7 +164,7 @@ def Afficher_Client():
     return render_template('mspr_Afficher_Client.html', data=data)
 
 
-@app.route("/mspr_consult_Livreur/")
+@app.route("/mspr_Consulter_Livreur")
 def Afficher_Livreur():
     conn = sqlite3.connect('weeat.db')
     cursor = conn.cursor()
@@ -176,7 +176,7 @@ def Afficher_Livreur():
     return render_template('mspr_Afficher_Livreur.html', data=data)
 
 
-@app.route("/mspr_consult_Produit/")
+@app.route("/mspr_Consulter_Produit")
 def Afficher_Produit():
     conn = sqlite3.connect('weeat.db')
     cursor = conn.cursor()
@@ -212,6 +212,31 @@ def mspr_Ajouter_Client():
 
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('mspr_Ajouter_Client.html')
+
+
+@app.route('/mspr_Ajouter_Livreur', methods=['GET', 'POST'])
+def mspr_Ajouter_Livreur():
+    if request.method == 'POST':
+        # Récupérer les données du formulaire
+        nom = request.form['nom']
+        prenom = request.form['prenom']
+        telephone = request.form['telephone']
+
+        # Insérer les données dans la base de données (ici, je suppose que tu as une table 'clients')
+        conn = sqlite3.connect('weeat.db')
+        cursor = conn.cursor()
+        if conn is not None:
+            cursor.execute('INSERT INTO clients (Nom, Prenom, Telephone) VALUES (?, ?, ?)', (nom, prenom, telephone))
+            conn.commit()
+            conn.close()
+        else:
+            return 'Erreur de connexion à la base de données'
+
+        # Rediriger vers la page de consultation des clients après l'ajout
+        return redirect(url_for('/'))
+
+    # Si la méthode est GET, simplement rendre le template du formulaire
+    return render_template('mspr_Ajouter_Livreur.html')
 
 
 if __name__ == "__main__":
