@@ -244,7 +244,7 @@ def mspr_Ajouter_Produit():
     if request.method == 'POST':
         # Récupérer les données du formulaire
         nom = request.form['nom']
-        prenom = request.form['prenom']
+        description = request.form['description']
         prix = request.form['prix']
         stock = request.form['stock']
 
