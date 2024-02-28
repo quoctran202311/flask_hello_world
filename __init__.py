@@ -239,6 +239,29 @@ def Afficher_Livreur():
     return render_template('mspr_Afficher_Livreur.html', data=data)
 
 
+@app.route('/mspr_Chercher_Livreur', methods=['GET', 'POST'])
+def d_Chercher_Livreur():
+    data = []  # Define data as an empty list
+    if request.method == 'POST':
+        # Récupérer les données du formulaire
+        nom = request.form['nom']
+
+        # ici, je suppose que tu as une table 'Livreurs'
+        conn = sqlite3.connect('weeat.db')
+        cursor = conn.cursor()
+        if conn is not None:
+            cursor.execute('SELECT * FROM Livreurs WHERE nom LIKE ?', ('%' + nom + '%',))
+            data = cursor.fetchall()
+            conn.close()
+            # Rendre le template HTML et transmettre les données
+            return render_template('mspr_Afficher_Livreur.html', data=data)
+        else:
+            return 'Erreur de connexion à la base de données'
+        
+    # Rendre le template HTML et transmettre les données
+    return render_template('mspr_Chercher_Livreur.html', data=data)
+
+
 @app.route('/mspr_Ajouter_Livreur', methods=['GET', 'POST'])
 def d_mspr_Ajouter_Livreur():
     if request.method == 'POST':
@@ -278,6 +301,29 @@ def Afficher_Produit():
     
     # Rendre le template HTML et transmettre les données
     return render_template('mspr_Afficher_Produit.html', data=data)
+
+
+@app.route('/mspr_Chercher_Produit', methods=['GET', 'POST'])
+def d_Chercher_Produit():
+    data = []  # Define data as an empty list
+    if request.method == 'POST':
+        # Récupérer les données du formulaire
+        nom = request.form['nom']
+
+        # ici, je suppose que tu as une table 'Produits'
+        conn = sqlite3.connect('weeat.db')
+        cursor = conn.cursor()
+        if conn is not None:
+            cursor.execute('SELECT * FROM Produits WHERE nom LIKE ?', ('%' + nom + '%',))
+            data = cursor.fetchall()
+            conn.close()
+            # Rendre le template HTML et transmettre les données
+            return render_template('mspr_Afficher_Produit.html', data=data)
+        else:
+            return 'Erreur de connexion à la base de données'
+        
+    # Rendre le template HTML et transmettre les données
+    return render_template('mspr_Chercher_Produit.html', data=data)
 
 
 @app.route('/mspr_Ajouter_Produit', methods=['GET', 'POST'])
