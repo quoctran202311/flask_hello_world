@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Modifier un client</title>
+</head>
+<body>
+
+    <h2>Modifier un client</h2>
+
+    <form action="/modify_client/{{ client[0] }}" method="post">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" value="{{ client[2] }}" required><br>
+
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" value="{{ client[3] }}" required><br>
+
+        <label for="adresse">Adresse :</label>
+        <input type="text" id="adresse" name="adresse" value="{{ client[4] }}" required><br>
+
+        <input type="submit" value="Modifier">
+    </form>
+
+</body>
+</html>
