@@ -98,8 +98,9 @@ def chercher_client():
 
 @app.route('/t_ajouter_client', methods=['GET', 'POST'])
 def ajouter_client():
-    # data = []  # Define data as an empty list
+    data = []  # Define data as an empty list
     if request.method == 'POST':
+        data = []  # Define data as an empty list
         # Récupérer les données du formulaire
         nom = request.form['nom']
         prenom = request.form['prenom']
@@ -111,8 +112,8 @@ def ajouter_client():
         if conn is not None:
             cursor.execute('INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?)', (nom, prenom, adresse))
             conn.commit()
-            cursor.execute('SELECT * FROM clients;')
-            data = cursor.fetchall()
+            # cursor.execute('SELECT * FROM clients;')
+            # data = cursor.fetchall()
             conn.close()
             # Rendre le template HTML et transmettre les données
             return render_template('read_data.html', data=data)
