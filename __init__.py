@@ -121,6 +121,7 @@ def ajouter_client():
 
         # Rediriger vers la page de consultation des clients après l'ajout
         # return redirect(url_for('t_consultation'))
+        return render_template('read_data.html', data=data)
 
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('create_data.html')
