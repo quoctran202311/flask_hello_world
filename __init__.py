@@ -165,6 +165,36 @@ def modify_client(client_id):
 
     return render_template('modify_data.html', client=client_data)
 
+
+@app.route('/modify_select_client/<int:client_id>', methods=['GET', 'POST'])
+def modify_select_client(client_id):
+    if request.method == 'POST':
+        # Retrieve data from the form
+        nom = request.form['nom']
+        prenom = request.form['prenom']
+        adresse = request.form['adresse']
+
+        # Update the client in the database
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        cursor.execute('UPDATE clients SET nom=?, prenom=?, adresse=? WHERE id=?',
+                       (nom, prenom, adresse, client_id))
+        conn.commit()
+        conn.close()
+
+        # Redirect to the page displaying the updated client list
+        return redirect('/t_chercher_client')
+
+    # If it's a GET request, retrieve client data from the database and render the modification form
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM clients WHERE id=?', (client_id,))
+    client_data = cursor.fetchone()
+    conn.close()
+
+    return render_template('modify_data.html', client=client_data)
+
+
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions (à cacher par la suite)
 
 # Fonction pour créer une entrée "authentifie" dans la session de l'utilisateur
