@@ -1,11 +1,26 @@
+<!-- read_data.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>T-Liste des Clients</title>
+    <title>Liste des Clients</title>
+    <script>
+        function modifyRow(rowId) {
+            var row = document.getElementById(rowId);
+            var cells = row.getElementsByTagName("td");
+            var nom = cells[2].innerText;
+            var prenom = cells[3].innerText;
+            var adresse = cells[4].innerText;
+
+            // Populate the modification form
+            document.getElementById("nom").value = nom;
+            document.getElementById("prenom").value = prenom;
+            document.getElementById("adresse").value = adresse;
+        }
+    </script>
 </head>
 <body>
-    <h1>H-Liste des Clients</h1>
+    <h1>Liste des Clients</h1>
     <table>
         <tr>
             <th>ID</th>
@@ -16,16 +31,28 @@
             <th>Action</th> <!-- New column for modification action -->
         </tr>
         {% for row in data %}
-        <tr>
+        <tr id="row{{ row[0] }}">
             <td>{{ row[0] }}</td>
             <td>{{ row[1] }}</td>
             <td>{{ row[2] }}</td>
             <td>{{ row[3] }}</td>
             <td>{{ row[4] }}</td>
-            <td><a href="/modify_select_client/{{ row[0] }}">Modifier</a></td> <!-- Link to modify client -->
+            <td><button onclick="modifyRow('row{{ row[0] }}')">Modifier</button></td> <!-- Button to modify client -->
         </tr>
         {% endfor %}
     </table>
+
+    <!-- Modification form -->
+    <h2>Modifier un client</h2>
+    <form id="modificationForm" action="/modify_select_client" method="post">
+        <input type="hidden" id="client_id" name="client_id">
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required><br>
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required><br>
+        <label for="adresse">Adresse :</label>
+        <input type="text" id="adresse" name="adresse" required><br>
+        <input type="submit" value="Modifier">
+    </form>
 </body>
 </html>
-
