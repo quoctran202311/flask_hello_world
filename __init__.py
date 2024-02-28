@@ -7,6 +7,7 @@ import sqlite3
 
 app = Flask(__name__)
 
+# # Intro - Flask
 
 @app.route('/')
 def hello_world():
@@ -15,6 +16,8 @@ def hello_world():
 @app.route("/fr/")
 def monfr():
     return "<h2>Bonjour POEC-POEC !</h2>"
+
+# # Intro Flask - Stat
 
 @app.route('/paris/')
 def meteo():
@@ -39,6 +42,8 @@ def mongraphiquehisto():
 @app.route("/rapportbarre/")
 def mongraphiquecol():
     return render_template("graphiquecol.html")
+
+# # Intro Flask - Programmation
 
 @app.route("/t_consultation", methods=['GET'])
 def ReadBDD():
@@ -130,6 +135,35 @@ def ajouter_client():
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('create_data.html')
 
+
+# Define route to modify client
+@app.route('/modify_client/<int:client_id>', methods=['GET', 'POST'])
+def modify_client(client_id):
+    if request.method == 'POST':
+        # Retrieve data from the form
+        nom = request.form['nom']
+        prenom = request.form['prenom']
+        adresse = request.form['adresse']
+
+        # Update the client in the database
+        conn = sqlite3.connect('database.db')
+        cursor = conn.cursor()
+        cursor.execute('UPDATE clients SET nom=?, prenom=?, adresse=? WHERE id=?',
+                       (nom, prenom, adresse, client_id))
+        conn.commit()
+        conn.close()
+
+        # Redirect to the page displaying the updated client
+        return redirect('/t_chercher_client')
+
+    # If it's a GET request, render the form to modify the client
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM clients WHERE id=?', (client_id,))
+    client_data = cursor.fetchone()
+    conn.close()
+
+    return render_template('modify_client.html', client=client_data)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions (à cacher par la suite)
 
