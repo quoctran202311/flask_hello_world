@@ -189,7 +189,7 @@ def d_Chercher_Client():
             data = cursor.fetchall()
             conn.close()
             # Rendre le template HTML et transmettre les données
-            return render_template('mspr_Consulter_Client.html', data=data)
+            return render_template('mspr_Afficher_Client.html', data=data)
         else:
             return 'Erreur de connexion à la base de données'
         
