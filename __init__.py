@@ -115,13 +115,16 @@ def ajouter_client():
             # cursor.execute('SELECT * FROM clients;')
             # data = cursor.fetchall()
             conn.close()
+            return redirect('/t_consultation')
+            #return redirect(url_for('ReadBDD'))
             # Rendre le template HTML et transmettre les données
-            return render_template('read_data.html', data=data)
+            # return render_template('read_data.html', data=data)
         else:
             return 'Erreur de connexion à la base de données'
 
         # Rediriger vers la page de consultation des clients après l'ajout
-        return redirect('/t_consultation')
+        # return redirect(url_for('ReadBDD'))
+        # return redirect('/t_consultation')
         # return render_template('read_data.html', data=data)
 
     # Si la méthode est GET, simplement rendre le template du formulaire
