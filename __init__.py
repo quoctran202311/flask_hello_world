@@ -174,6 +174,29 @@ def Afficher_Client():
     return render_template('mspr_Afficher_Client.html', data=data)
 
 
+@app.route('/mspr_Chercher_Client', methods=['GET', 'POST'])
+def d_Chercher_Client():
+    data = []  # Define data as an empty list
+    if request.method == 'POST':
+        # Récupérer les données du formulaire
+        nom = request.form['nom']
+
+        # ici, je suppose que tu as une table 'clients'
+        conn = sqlite3.connect('weeat.db')
+        cursor = conn.cursor()
+        if conn is not None:
+            cursor.execute('SELECT * FROM clients WHERE nom LIKE ?', ('%' + nom + '%',))
+            data = cursor.fetchall()
+            conn.close()
+            # Rendre le template HTML et transmettre les données
+            return render_template('mspr_Consulter_Client.html', data=data)
+        else:
+            return 'Erreur de connexion à la base de données'
+        
+    # Rendre le template HTML et transmettre les données
+    return render_template('mspr_Chercher_Client.html', data=data)
+
+
 @app.route('/mspr_Ajouter_Client', methods=['GET', 'POST'])
 def d_mspr_Ajouter_Client():
     if request.method == 'POST':
