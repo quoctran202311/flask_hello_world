@@ -107,7 +107,7 @@ def ajouter_client():
         adresse = request.form['adresse']
 
         # Insérer les données dans la base de données (ici, je suppose que tu as une table 'clients')
-        conn = sqlite3.connect('database1.db')
+        conn = sqlite3.connect('database.db')
         cursor = conn.cursor()
         if conn is not None:
             cursor.execute('INSERT INTO clients (nom, prenom, adresse) VALUES (?, ?, ?)', (nom, prenom, adresse))
