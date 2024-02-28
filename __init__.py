@@ -174,6 +174,36 @@ def Afficher_Client():
     return render_template('mspr_Afficher_Client.html', data=data)
 
 
+@app.route('/mspr_Ajouter_Client', methods=['GET', 'POST'])
+def d_mspr_Ajouter_Client():
+    if request.method == 'POST':
+        # Récupérer les données du formulaire
+        nom = request.form['nom']
+        prenom = request.form['prenom']
+        email = request.form['email']
+        telephone = request.form['telephone']
+
+        # Insérer les données dans la table 'clients'
+        conn = sqlite3.connect('weeat.db')
+        cursor = conn.cursor()
+        if conn is not None:
+            cursor.execute('INSERT INTO clients (Nom, Prenom, Email, Telephone) VALUES (?, ?, ?, ?)', (nom, prenom, email, telephone))
+            conn.commit()
+            conn.close()
+            return redirect('/mspr_Consulter_Client')
+            # return redirect(url_for('Afficher_Client'))
+            # Rendre le template HTML et transmettre les données
+            # return render_template('mspr_Afficher_Client.html', data=data)
+        else:
+            return 'Erreur de connexion à la base de données'
+
+        # Rediriger vers la page de consultation des clients après l'ajout
+        return redirect(url_for('Afficher_Client'))
+
+    # Si la méthode est GET, simplement rendre le template du formulaire
+    return render_template('mspr_Ajouter_Client.html')
+
+
 @app.route("/mspr_Consulter_Livreur", methods=['GET'])
 def Afficher_Livreur():
     conn = sqlite3.connect('weeat.db')
@@ -198,38 +228,8 @@ def Afficher_Produit():
     return render_template('mspr_Afficher_Produit.html', data=data)
 
 
-@app.route('/mspr_Ajouter_Client', methods=['GET', 'POST'])
-def mspr_Ajouter_Client():
-    if request.method == 'POST':
-        # Récupérer les données du formulaire
-        nom = request.form['nom']
-        prenom = request.form['prenom']
-        email = request.form['email']
-        telephone = request.form['telephone']
-
-        # Insérer les données dans la table 'clients'
-        conn = sqlite3.connect('weeat.db')
-        cursor = conn.cursor()
-        if conn is not None:
-            cursor.execute('INSERT INTO clients (Nom, Prenom, Email, Telephone) VALUES (?, ?, ?, ?)', (nom, prenom, email, telephone))
-            conn.commit()
-            conn.close()
-            return redirect('/mspr_Consulter_Client')
-            # return redirect(url_for('Afficher_Client'))
-            # Rendre le template HTML et transmettre les données
-            # return render_template('mspr_Afficher_Client.html', data=data)
-        else:
-            return 'Erreur de connexion à la base de données'
-
-        # Rediriger vers la page de consultation des clients après l'ajout
-        # return redirect(url_for('Afficher_Client'))
-
-    # Si la méthode est GET, simplement rendre le template du formulaire
-    return render_template('mspr_Ajouter_Client.html')
-
-
 @app.route('/mspr_Ajouter_Livreur', methods=['GET', 'POST'])
-def mspr_Ajouter_Livreur():
+def d_mspr_Ajouter_Livreur():
     if request.method == 'POST':
         # Récupérer les données du formulaire
         nom = request.form['nom']
@@ -254,7 +254,7 @@ def mspr_Ajouter_Livreur():
 
 
 @app.route('/mspr_Ajouter_Produit', methods=['GET', 'POST'])
-def mspr_Ajouter_Produit():
+def d_mspr_Ajouter_Produit():
     if request.method == 'POST':
         # Récupérer les données du formulaire
         nom = request.form['nom']
