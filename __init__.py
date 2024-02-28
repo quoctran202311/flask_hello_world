@@ -163,7 +163,7 @@ def modify_client(client_id):
     client_data = cursor.fetchone()
     conn.close()
 
-    return render_template('modify_client.html', client=client_data)
+    return render_template('modify_data.html', client=client_data)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions (à cacher par la suite)
 
