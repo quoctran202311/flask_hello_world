@@ -214,11 +214,15 @@ def mspr_Ajouter_Client():
             cursor.execute('INSERT INTO clients (Nom, Prenom, Email, Telephone) VALUES (?, ?, ?, ?)', (nom, prenom, email, telephone))
             conn.commit()
             conn.close()
+            return redirect('/mspr_Consulter_Client')
+            # return redirect(url_for('Afficher_Client'))
+            # Rendre le template HTML et transmettre les données
+            # return render_template('mspr_Afficher_Client.html', data=data)
         else:
             return 'Erreur de connexion à la base de données'
 
         # Rediriger vers la page de consultation des clients après l'ajout
-        return redirect(url_for('/'))
+        # return redirect('/mspr_Consulter_Client')
 
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('mspr_Ajouter_Client.html')
@@ -243,7 +247,7 @@ def mspr_Ajouter_Livreur():
             return 'Erreur de connexion à la base de données'
 
         # Rediriger vers la page de consultation des clients après l'ajout
-        return redirect(url_for('/'))
+        # return redirect('/mspr_Consulter_Livreur')
 
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('mspr_Ajouter_Livreur.html')
@@ -265,11 +269,15 @@ def mspr_Ajouter_Produit():
             cursor.execute('INSERT INTO Produits (Nom, Description, Prix, Stock) VALUES (?, ?, ?, ?)', (nom, description, prix, stock))
             conn.commit()
             conn.close()
+            return redirect('/mspr_Consulter_Produit')
+            #return redirect(url_for('ReadBDD'))
+            # Rendre le template HTML et transmettre les données
+            # return render_template('read_data.html', data=data)
         else:
             return 'Erreur de connexion à la base de données'
 
         # Rediriger vers la page de consultation des clients après l'ajout
-        return redirect(url_for('/'))
+        # return redirect('/mspr_Consulter_Produit')
 
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('mspr_Ajouter_Produit.html')
