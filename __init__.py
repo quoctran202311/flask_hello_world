@@ -162,7 +162,7 @@ def authentification():
     return render_template('formulaire_authentification.html', error=False)
 
 
-@app.route("/mspr_Consulter_Client")
+@app.route("/mspr_Consulter_Client", methods=['GET'])
 def Afficher_Client():
     conn = sqlite3.connect('weeat.db')
     cursor = conn.cursor()
@@ -174,7 +174,7 @@ def Afficher_Client():
     return render_template('mspr_Afficher_Client.html', data=data)
 
 
-@app.route("/mspr_Consulter_Livreur")
+@app.route("/mspr_Consulter_Livreur", methods=['GET'])
 def Afficher_Livreur():
     conn = sqlite3.connect('weeat.db')
     cursor = conn.cursor()
@@ -186,7 +186,7 @@ def Afficher_Livreur():
     return render_template('mspr_Afficher_Livreur.html', data=data)
 
 
-@app.route("/mspr_Consulter_Produit")
+@app.route("/mspr_Consulter_Produit", methods=['GET'])
 def Afficher_Produit():
     conn = sqlite3.connect('weeat.db')
     cursor = conn.cursor()
@@ -222,7 +222,7 @@ def mspr_Ajouter_Client():
             return 'Erreur de connexion à la base de données'
 
         # Rediriger vers la page de consultation des clients après l'ajout
-        # return redirect('/mspr_Consulter_Client')
+        # return redirect(url_for('Afficher_Client'))
 
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('mspr_Ajouter_Client.html')
