@@ -40,7 +40,7 @@ def mongraphiquehisto():
 def mongraphiquecol():
     return render_template("graphiquecol.html")
 
-@app.route("/t_consultation")
+@app.route("/t_consultation", methods=['GET'])
 def ReadBDD():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
