@@ -168,14 +168,14 @@ def modify_client(client_id):
 
 @app.route('/modify_select_client', methods=['GET', 'POST'])
 def modify_select_client():
-    #client_id = request.form['client_id']
+    #client_id = request.form['id']
     #nom = request.form['nom']
     #prenom = request.form['prenom']
     #adresse = request.form['adresse']
 
     if request.method == 'POST':
         # Retrieve data from the form
-        client_id = request.form['client_id']
+        client_id = request.form['id']
         nom = request.form['nom']
         prenom = request.form['prenom']
         adresse = request.form['adresse']
