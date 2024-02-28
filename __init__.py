@@ -40,7 +40,7 @@ def mongraphiquehisto():
 def mongraphiquecol():
     return render_template("graphiquecol.html")
 
-@app.route("/t_consultation/")
+@app.route("/t_consultation")
 def ReadBDD():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
@@ -115,7 +115,7 @@ def ajouter_client():
             return 'Erreur de connexion à la base de données'
 
         # Rediriger vers la page de consultation des clients après l'ajout
-        return redirect(url_for('/'))
+        return redirect(url_for('t_consultation'))
 
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('create_data.html')
