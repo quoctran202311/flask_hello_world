@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>T-Liste des Clients</title>
+</head>
+<body>
+    <h1>H-Liste des Clients</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Création</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Adresse</th>
+            <th>Action</th> <!-- New column for modification action -->
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td><a href="/modify_client/{{ row[0] }}">Modifier</a></td> <!-- Link to modify client -->
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>*
