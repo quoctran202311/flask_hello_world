@@ -216,18 +216,6 @@ def Afficher_Livreur():
     return render_template('mspr_Afficher_Livreur.html', data=data)
 
 
-@app.route("/mspr_Consulter_Produit", methods=['GET'])
-def Afficher_Produit():
-    conn = sqlite3.connect('weeat.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM Produits;')
-    data = cursor.fetchall()
-    conn.close()
-    
-    # Rendre le template HTML et transmettre les données
-    return render_template('mspr_Afficher_Produit.html', data=data)
-
-
 @app.route('/mspr_Ajouter_Livreur', methods=['GET', 'POST'])
 def d_mspr_Ajouter_Livreur():
     if request.method == 'POST':
@@ -243,6 +231,10 @@ def d_mspr_Ajouter_Livreur():
             cursor.execute('INSERT INTO Livreurs (Nom, Prenom, Telephone) VALUES (?, ?, ?)', (nom, prenom, telephone))
             conn.commit()
             conn.close()
+            return redirect('/mspr_Consulter_Livreur')
+            # return redirect(url_for('Afficher_Livreur'))
+            # Rendre le template HTML et transmettre les données
+            # return render_template('mspr_Afficher_Livreur.html', data=data)
         else:
             return 'Erreur de connexion à la base de données'
 
@@ -251,6 +243,18 @@ def d_mspr_Ajouter_Livreur():
 
     # Si la méthode est GET, simplement rendre le template du formulaire
     return render_template('mspr_Ajouter_Livreur.html')
+
+
+@app.route("/mspr_Consulter_Produit", methods=['GET'])
+def Afficher_Produit():
+    conn = sqlite3.connect('weeat.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM Produits;')
+    data = cursor.fetchall()
+    conn.close()
+    
+    # Rendre le template HTML et transmettre les données
+    return render_template('mspr_Afficher_Produit.html', data=data)
 
 
 @app.route('/mspr_Ajouter_Produit', methods=['GET', 'POST'])
@@ -270,9 +274,9 @@ def d_mspr_Ajouter_Produit():
             conn.commit()
             conn.close()
             return redirect('/mspr_Consulter_Produit')
-            #return redirect(url_for('ReadBDD'))
+            # return redirect(url_for('Afficher_Produit'))
             # Rendre le template HTML et transmettre les données
-            # return render_template('read_data.html', data=data)
+            # return render_template('mspr_Afficher_Produit.html', data=data)
         else:
             return 'Erreur de connexion à la base de données'
 
