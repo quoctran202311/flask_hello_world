@@ -166,7 +166,7 @@ def modify_client(client_id):
     return render_template('modify_data.html', client=client_data)
 
 
-@app.route('/modify_select_client', methods=['POST'])
+@app.route('/modify_select_client', methods=['GET', 'POST'])
 def modify_select_client():
     #client_id = request.form['client_id']
     #nom = request.form['nom']
