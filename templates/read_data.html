@@ -12,6 +12,7 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Adresse</th>
+            <th>Action</th> <!-- Added column for action -->
         </tr>
         {% for row in data %}
         <tr>
@@ -20,6 +21,7 @@
             <td>{{ row[2] }}</td>
             <td>{{ row[3] }}</td>
             <td>{{ row[4] }}</td>
+            <td><a href="/t_fiche_client/{{ row[0] }}">Voir détails</a></td> <!-- Link to view details -->
         </tr>
         {% endfor %}
     </table>
