@@ -10,13 +10,16 @@ app = Flask(__name__)
 # # Intro - Flask
 
 @app.route('/')
-def hello_world():
-    return render_template('hello.html')
+#def hello_world():
+#    return render_template('hello.html')
+def index():
+    return render_template('login.html')
 
 @app.route("/fr/")
 def monfr():
     return "<h2>Bonjour POEC-POEC !</h2>"
 
+    
 # # Intro Flask - Stat
 
 @app.route('/paris/')
