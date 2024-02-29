@@ -11,7 +11,7 @@
 # 3) Run this script in terminal / crontab: ksh backup_db.ksh 
 
 # PATH_BIN=$PATH_BIN:/usr/bin/
-PATH_SOURCE=/home/tran/www/flask
+PATH_SOURCE=/home/tran/www/flask/weeat.db
 PATH_TARGET_DUMP=/home/tran/www/dbbackup/export_all_mydb.sql
 
 ##### DUMP ALL SCHEMA & DATA #####
