@@ -192,8 +192,8 @@ def modify_select_client():
         # return redirect('/t_chercher_client')
         return redirect('/t_consultation')
 
-
-    return render_template('select_data.html', client=client_data)
+    # return render_template('select_data.html', client=client_data)
+    return render_template('select_data.html')
 
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions (à cacher par la suite)
