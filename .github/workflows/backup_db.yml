@@ -25,7 +25,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd $HOME/www/flask
-            sqlite3 database.db .dump > $HOME/www/dbbackup/sauvegarde.sql
+            sqlite3 weeat.db .dump > $HOME/www/dbbackup/dump_db.sql
   CopyBDD:
     needs: SauvegardeBDD
     runs-on: ubuntu-latest
@@ -38,7 +38,7 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           script: |
             cd $HOME/www/dbbackup
-            sqlite3 database.db .dump > $HOME/www/dbbackup/sauvegarde.sql
+            sqlite3 $HOME/www/flask/weeat.db .dump > $HOME/www/dbbackup/dump_db_4scp.sql
             echo "${{ secrets.KEYSSH }}" > key.pem && chmod 600 key.pem
-            scp -i "key.pem" sauvegarde.sql ${{ secrets.USERNAMEDIST }}@ssh-${{ secrets.USERNAMEDIST }}.alwaysdata.net:/home/${{ secrets.USERNAMEDIST }}/www/dbbackup/
+            scp -i "key.pem" dump_db_4scp.sql ${{ secrets.USERNAMEDIST }}@ssh-${{ secrets.USERNAMEDIST }}.alwaysdata.net:/home/${{ secrets.USERNAMEDIST }}/www/dbbackup/
             
