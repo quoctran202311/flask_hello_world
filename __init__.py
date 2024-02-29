@@ -168,7 +168,7 @@ def modify_client(client_id):
 
 @app.route('/modify_select_client', methods=['GET', 'POST'])
 def modify_select_client():
-    client_id = request.form['id']
+    # client_id = request.form['id']
     #nom = request.form['nom']
     #prenom = request.form['prenom']
     #adresse = request.form['adresse']
@@ -201,6 +201,17 @@ def modify_select_client():
 
     # return render_template('select_data.html')
     return render_template('select_data.html', client=client_data)
+
+
+@app.route("/t_modify_clients", methods=['GET'])
+def t_mod_clients():
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM clients;')
+    data = cursor.fetchall()
+    conn.close()
+    
+    return render_template('t_modify_clients.html', data=data)
 
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions (à cacher par la suite)
