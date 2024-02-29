@@ -440,5 +440,28 @@ def d_mspr_Ajouter_Produit():
     return render_template('mspr_Ajouter_Produit.html')
 
 
+# Dummy user credentials (to be replaced with actual user database)
+users = {
+    'user1': 'password1',
+    'user2': 'password2'
+}
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
+
+    # Check if the username exists and the password matches
+    if username in users and users[username] == password:
+        # Successful login
+        return redirect(url_for('dashboard', username=username))
+    else:
+        # Failed login
+        return render_template('login.html', message='Invalid username or password')
+
+@app.route('/dashboard/<username>')
+def dashboard(username):
+    return render_template('dashboard.html', username=username)
+
 if __name__ == "__main__":
   app.run(debug=True)
