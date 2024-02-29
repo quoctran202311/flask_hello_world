@@ -10,9 +10,9 @@
 # 2) Set your file name in PATH_TARGET_DUMP for all schema & data
 # 3) Run this script in terminal / crontab: ksh backup_db.ksh 
 
-# PATH_BIN=$PATH_BIN:/usr/bin/";
+# PATH_BIN=$PATH_BIN:/usr/bin/
 PATH_SOURCE=/home/tran/www/flask
-PATH_TARGET_DUMP=/home/tran/www/dbbackup/export_all_mydb.sql";
+PATH_TARGET_DUMP=/home/tran/www/dbbackup/export_all_mydb.sql
 
 ##### DUMP ALL SCHEMA & DATA #####
 sqlite3 $PATH_SOURCE .dump > $PATH_TARGET_DUMP;
