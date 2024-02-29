@@ -154,8 +154,9 @@ def modify_client(client_id):
         conn.close()
 
         # Redirect to the page displaying the updated client
-        return redirect('/t_fiche_client/<int:client_id>')
-
+        # return redirect('/t_fiche_client/<int:client_id>')
+        return redirect(url_for('Readfiche', post_id=client_id))
+        
     # If it's a GET request, render the form to modify the client
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
