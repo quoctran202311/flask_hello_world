@@ -470,10 +470,11 @@ def dashboard(username):
 def mspr_Index():
     menu_items = [
         {'name': 'Home', 'url': '/mspr_Index'},
-        {'name': 'About', 'url': '/mspr_About'},
         {'name': 'Client', 'url': '/mspr_Client'},
         {'name': 'Livreur', 'url': '/mspr_Livreur'},
         {'name': 'Produit', 'url': '/mspr_Produit'},
+        {'name': 'Commande', 'url': '/mspr_Commande'},
+        {'name': 'About', 'url': '/mspr_About'},
         # Add more menu items as needed
     ]
     return render_template('mspr_Index.html', menu_items=menu_items)
@@ -496,6 +497,11 @@ def mspr_Livreur():
 def mspr_Produit():
     #return render_template('mspr_Produit.html')
     return redirect('/mspr_Consulter_Produit')
+
+@app.route('/mspr_Commande')
+def mspr_Commande():
+    return render_template('mspr_Commande.html')
+    #return redirect('/mspr_Consulter_Commande')
 
 if __name__ == "__main__":
   app.run(debug=True)
