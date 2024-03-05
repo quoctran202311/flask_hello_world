@@ -472,7 +472,8 @@ def mspr_Index():
         {'name': 'Home', 'url': '/mspr_Index'},
         {'name': 'About', 'url': '/mspr_About'},
         {'name': 'Client', 'url': '/mspr_Client'},
-        #{'name': 'Livreur', 'url': '/mspr_Livreur'},
+        {'name': 'Livreur', 'url': '/mspr_Livreur'},
+        {'name': 'Produit', 'url': '/mspr_Produit'},
         # Add more menu items as needed
     ]
     return render_template('mspr_Index.html', menu_items=menu_items)
@@ -481,13 +482,20 @@ def mspr_Index():
 def mspr_About():
     return render_template('mspr_About.html')
 
-#@app.route('/mspr_Client')
-#def mspr_Client():
-#    return render_template('mspr_Client.html')
+@app.route('/mspr_Client')
+def mspr_Client():
+    #return render_template('mspr_Client.html')
+    return redirect('/mspr_Consulter_Client')
 
-#@app.route('/mspr_Livreur')
-#def contact():
-#    return render_template('mspr_Livreur.html')
+@app.route('/mspr_Livreur')
+def contact():
+    #return render_template('mspr_Livreur.html')
+    return render_template('mspr_Livreur.html')
+
+@app.route('/mspr_Produit')
+def contact():
+    #return render_template('mspr_Produit.html')
+    return render_template('mspr_Produit.html')
 
 if __name__ == "__main__":
   app.run(debug=True)
