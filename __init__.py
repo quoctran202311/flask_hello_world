@@ -488,12 +488,12 @@ def mspr_Client():
     return redirect('/mspr_Consulter_Client')
 
 @app.route('/mspr_Livreur')
-def contact():
+def mspr_Livreur():
     #return render_template('mspr_Livreur.html')
     return render_template('mspr_Livreur.html')
 
 @app.route('/mspr_Produit')
-def contact():
+def mspr_Produit():
     #return render_template('mspr_Produit.html')
     return render_template('mspr_Produit.html')
 
