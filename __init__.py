@@ -466,5 +466,28 @@ def login():
 def dashboard(username):
     return render_template('dashboard.html', username=username)
 
+@app.route('/mspr_Index')
+def mspr_Index():
+    menu_items = [
+        {'name': 'Home', 'url': '/mspr_Index'},
+        {'name': 'About', 'url': '/mspr_About'},
+        {'name': 'Client', 'url': '/mspr_Client'},
+        #{'name': 'Livreur', 'url': '/mspr_Livreur'},
+        # Add more menu items as needed
+    ]
+    return render_template('mspr_Index.html', menu_items=menu_items)
+
+@app.route('/mspr_About')
+def mspr_About():
+    return render_template('mspr_About.html')
+
+#@app.route('/mspr_Client')
+#def mspr_Client():
+#    return render_template('mspr_Client.html')
+
+#@app.route('/mspr_Livreur')
+#def contact():
+#    return render_template('mspr_Livreur.html')
+
 if __name__ == "__main__":
   app.run(debug=True)
