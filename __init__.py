@@ -490,12 +490,12 @@ def mspr_Client():
 @app.route('/mspr_Livreur')
 def mspr_Livreur():
     #return render_template('mspr_Livreur.html')
-    return render_template('mspr_Livreur.html')
+    return redirect('/mspr_Consulter_Livreur')
 
 @app.route('/mspr_Produit')
 def mspr_Produit():
     #return render_template('mspr_Produit.html')
-    return render_template('mspr_Produit.html')
+    return redirect('/mspr_Consulter_Produit')
 
 if __name__ == "__main__":
   app.run(debug=True)
