@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu Example</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <ul>
+        {% for item in menu_items %}
+            <li>
+                <a href="{{ item.url }}">{{ item.name }}</a>
+                {% if item.sub_menu %}
+                    <ul>
+                        {% for sub_item in item.sub_menu %}
+                            <li><a href="{{ sub_item.url }}">{{ sub_item.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
