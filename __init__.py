@@ -466,17 +466,35 @@ def login():
 def dashboard(username):
     return render_template('dashboard.html', username=username)
 
+menu_items = [
+    {'name': 'Home', 'url': '/mspr_Index'},
+    {
+        'name': 'Client',
+        'url': '#',
+        'sub_menu': [
+            {'name': 'Consultation', 'url': '/mspr_Consulter_Client'},
+            {'name': 'Recherche', 'url': '/mspr_Chercher_Client'},
+            # Add more sub-menu items as needed
+        ]
+    },
+    {'name': 'Livreur', 'url': '/mspr_Livreur'},
+    {'name': 'Produit', 'url': '/mspr_Produit'},
+    {'name': 'Commande', 'url': '/mspr_Commande'},
+    {'name': 'About', 'url': '/mspr_About'},
+    # Add more menu items as needed
+]
+
 @app.route('/mspr_Index')
 def mspr_Index():
-    menu_items = [
-        {'name': 'Home', 'url': '/mspr_Index'},
-        {'name': 'Client', 'url': '/mspr_Client'},
-        {'name': 'Livreur', 'url': '/mspr_Livreur'},
-        {'name': 'Produit', 'url': '/mspr_Produit'},
-        {'name': 'Commande', 'url': '/mspr_Commande'},
-        {'name': 'About', 'url': '/mspr_About'},
+    #menu_items = [
+    #    {'name': 'Home', 'url': '/mspr_Index'},
+    #    {'name': 'Client', 'url': '/mspr_Client'},
+    #    {'name': 'Livreur', 'url': '/mspr_Livreur'},
+    #    {'name': 'Produit', 'url': '/mspr_Produit'},
+    #    {'name': 'Commande', 'url': '/mspr_Commande'},
+    #    {'name': 'About', 'url': '/mspr_About'},
         # Add more menu items as needed
-    ]
+    #]
     return render_template('mspr_Index.html', menu_items=menu_items)
 
 @app.route('/mspr_About')
