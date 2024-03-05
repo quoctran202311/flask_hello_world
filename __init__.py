@@ -484,7 +484,7 @@ menu_items = [
     # Add more menu items as needed
 ]
 
-@app.route('/mspr_Index')
+@app.route('/mspr_Index1')
 def mspr_Index():
     #menu_items = [
     #    {'name': 'Home', 'url': '/mspr_Index'},
@@ -496,6 +496,10 @@ def mspr_Index():
         # Add more menu items as needed
     #]
     return render_template('mspr_Index.html', menu_items=menu_items)
+
+@app.route('/mspr_Index')
+def mspr_Index2():
+    return render_template('mspr_Index2.html', menu_items=menu_items)
 
 @app.route('/mspr_About')
 def mspr_About():
