@@ -517,7 +517,7 @@ menu_items = [
     },
     {
         'name': 'Client',
-        'url': '/mspr_DropList_Index',
+        'url': '/mspr_Consulter_Client',
         'dropdown': [
             {'name': 'Consultation', 'url': '/mspr_Consulter_Client'},
             {'name': 'Recherche', 'url': '/mspr_Chercher_Client'}
