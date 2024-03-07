@@ -466,6 +466,42 @@ def login():
 def dashboard(username):
     return render_template('dashboard.html', username=username)
 
+menu-dropdown-list_items = [
+    {'name': 'Home', 'url': '/'},
+    {'name': 'About', 'url': '/about'},
+    {
+        'name': 'Client',
+        'url': '#',
+        'sub_menu': [
+            {
+                'name': 'Service 1',
+                'url': '#',
+                'listbox': [
+                    {'name': 'Option 1', 'value': 'option1'},
+                    {'name': 'Option 2', 'value': 'option2'},
+                    # Add more listbox options as needed
+                ]
+            },
+            {
+                'name': 'Service 2',
+                'url': '#',
+                'listbox': [
+                    {'name': 'Option A', 'value': 'optionA'},
+                    {'name': 'Option B', 'value': 'optionB'},
+                    # Add more listbox options as needed
+                ]
+            },
+            # Add more sub-menu items as needed
+        ]
+    },
+    {'name': 'Livreur', 'url': '/mspr_Livreur'},
+    {'name': 'Produit', 'url': '/mspr_Produit'},
+    {'name': 'Commande', 'url': '/mspr_Commande'},
+    {'name': 'About', 'url': '/mspr_About'},
+    # Add more menu items as needed
+]
+
+# Simple menu with sub-menu
 menu_items = [
     {'name': 'Home', 'url': '/mspr_Index'},
     {
@@ -484,6 +520,7 @@ menu_items = [
     # Add more menu items as needed
 ]
 
+# Simple menu
 @app.route('/mspr_Index1')
 def mspr_Index():
     #menu_items = [
