@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect
 from flask import json
 from urllib.request import urlopen
 import sqlite3
-
+from flask.ext.login import LoginManager
 from Flask_Login import LoginManager, login_user, logout_user, login_required
 from user import User, users
 
