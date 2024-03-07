@@ -554,8 +554,8 @@ users = {
     'user2': 'password2'
 }
 
-@app.route('/login_test', methods=['POST'])
-def login_test():
+@app.route('/login', methods=['POST'])
+def login():
     username = request.form['username']
     password = request.form['password']
 
