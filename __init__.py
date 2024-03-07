@@ -501,11 +501,11 @@ def mspr_Index1():
     #]
     return render_template('mspr_Index.html', menu_items=menu_items)
 
-@app.route('/mspr_Index2')
+@app.route('/mspr_Index')
 def mspr_Index2():
     return render_template('mspr_index2.html', menu_items=menu_items)
 
-@app.route('/mspr_Index')
+@app.route('/mspr_Index3')
 def mspr_Index3():
     return render_template('mspr_index3.html', menu_items=menu_items)
 
