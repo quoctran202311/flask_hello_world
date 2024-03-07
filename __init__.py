@@ -567,8 +567,9 @@ def login():
         # Failed login
         return render_template('login.html', message='Invalid username or password')
 
-@app.route('/dashboard/<username>')
-def dashboard(username):
+# @app.route('/dashboard/<username>')
+@app.route('/dashboard')
+def dashboard():
     return render_template('dashboard.html', username=username)
 
 @app.route('/protected')
