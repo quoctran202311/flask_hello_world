@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu DropDown list</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <ul>
+        {% for item in menu_items %}
+            <li>
+                <a href="{{ item.url }}">{{ item.name }}</a>
+                {% if item.sub_menu %}
+                    <ul>
+                        {% for sub_item in item.sub_menu %}
+                            <li>
+                                <a href="{{ sub_item.url }}">{{ sub_item.name }}</a>
+                                {% if sub_item.listbox %}
+                                    <select>
+                                        {% for option in sub_item.listbox %}
+                                            <option value="{{ option.value }}">{{ option.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
