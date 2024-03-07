@@ -7,6 +7,9 @@ import sqlite3
 
 app = Flask(__name__)
 
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions (à cacher par la suite)
+
+
 # # Intro - Flask
 
 @app.route('/')
@@ -217,8 +220,6 @@ def t_mod_clients():
     
     return render_template('t_modify_clients.html', data=data)
 
-
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions (à cacher par la suite)
 
 # Fonction pour créer une entrée "authentifie" dans la session de l'utilisateur
 def est_authentifie():
