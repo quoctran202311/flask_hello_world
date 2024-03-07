@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu ListBox</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <ul>
+        {% for item in menu_items %}
+            <li>
+                <a href="{{ item.url }}">{{ item.name }}</a>
+                                {% if item.listbox %}
+                                    <select>
+                                        {% for option in item.listbox %}
+                                            <a href="{{ option.url }}">{{ option.name }}</a>
+                                            <option value="{{ option.value }}">{{ option.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
