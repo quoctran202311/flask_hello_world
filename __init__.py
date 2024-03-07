@@ -467,8 +467,32 @@ def dashboard(username):
     return render_template('dashboard.html', username=username)
 
 
-# Simple menu with sub-menu
+# Define menu items with dropdown options
 menu_items = [
+    {
+        'name': 'Home',
+        'url': '/mspr_Index'
+    },
+    {
+        'name': 'Client',
+        'url': '#',
+        'dropdown': [
+            {'name': 'Consultation', 'url': '/mspr_Consulter_Client'},
+            {'name': 'Recherche', 'url': '/mspr_Chercher_Client'}
+        ]
+    },
+    {
+        'name': 'Livreur',
+        'url': '/mspr_Livreur'
+    }
+    {
+        'name': 'About',
+        'url': '/mspr_About'
+    },
+]
+
+# Simple menu with sub-menu
+menu_items_basic = [
     {'name': 'Home', 'url': '/mspr_Index'},
     {
         'name': 'Client',
