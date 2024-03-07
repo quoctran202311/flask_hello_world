@@ -492,13 +492,13 @@ menu_items = [
 ]
 
 # Simple menu with sub-menu
-menu_items_basic = [
+menu_items_sub-menu = [
     {'name': 'Home', 'url': '/mspr_Index'},
     {
         'name': 'Client',
         'url': '#',
-        #'sub_menu': [
-        'listbox': [
+        #'listbox': [
+        'sub_menu': [
             {'name': 'Consultation', 'url': '/mspr_Consulter_Client'},
             {'name': 'Recherche', 'url': '/mspr_Chercher_Client'},
             # Add more sub-menu items as needed
@@ -514,15 +514,15 @@ menu_items_basic = [
 # Simple menu
 @app.route('/mspr_Index1')
 def mspr_Index1():
-    #menu_items = [
-    #    {'name': 'Home', 'url': '/mspr_Index'},
-    #    {'name': 'Client', 'url': '/mspr_Client'},
-    #    {'name': 'Livreur', 'url': '/mspr_Livreur'},
-    #    {'name': 'Produit', 'url': '/mspr_Produit'},
-    #    {'name': 'Commande', 'url': '/mspr_Commande'},
-    #    {'name': 'About', 'url': '/mspr_About'},
+    menu_items = [
+        {'name': 'Home', 'url': '/mspr_Index1'},
+        {'name': 'Client', 'url': '/mspr_Client'},
+        {'name': 'Livreur', 'url': '/mspr_Livreur'},
+        {'name': 'Produit', 'url': '/mspr_Produit'},
+        {'name': 'Commande', 'url': '/mspr_Commande'},
+        {'name': 'About', 'url': '/mspr_About'},
         # Add more menu items as needed
-    #]
+    ]
     return render_template('mspr_Index.html', menu_items=menu_items)
 
 @app.route('/mspr_Index2')
