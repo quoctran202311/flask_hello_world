@@ -572,21 +572,5 @@ def dashboard(username):
     return render_template('dashboard.html', username=username)
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        user_id = int(request.form['user_id'])
-        if user_id in users:
-            user = users[user_id]
-            login_user(user)
-            return redirect(url_for('index'))
-    return render_template('login.html')
-
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('html_index'))
-
 if __name__ == "__main__":
   app.run(debug=True)
