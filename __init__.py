@@ -502,7 +502,7 @@ menu-dropdown-list_items = [
 ]
 
 # Simple menu with sub-menu
-menu_items_sub_menu = [
+menu_items = [
     {'name': 'Home', 'url': '/mspr_Index'},
     {
         'name': 'Client',
