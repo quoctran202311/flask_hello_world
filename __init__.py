@@ -535,7 +535,7 @@ def mspr_Index3():
 
 @app.route('/mspr_Index')
 def mspr_Index4():
-    return render_template('mspr_index4.html', menu_items=menu_items)
+    return render_template('mspr_Index_Dropdown_list.html', menu_items=menu_items)
 
 @app.route('/list')
 def index_list():
