@@ -471,11 +471,11 @@ def dashboard(username):
 menu_items = [
     {
         'name': 'Home',
-        'url': '/mspr_Index'
+        'url': '/mspr_DropList_Index'
     },
     {
         'name': 'Client',
-        'url': '#',
+        'url': '/mspr_DropList_Index',
         'dropdown': [
             {'name': 'Consultation', 'url': '/mspr_Consulter_Client'},
             {'name': 'Recherche', 'url': '/mspr_Chercher_Client'}
@@ -493,7 +493,7 @@ menu_items = [
 
 # Simple menu with sub-menu
 menu_sub_items = [
-    {'name': 'Home', 'url': '/mspr_Index'},
+    {'name': 'Home', 'url': '/mspr_sub_Index'},
     {
         'name': 'Client',
         'url': '#',
@@ -525,16 +525,16 @@ def mspr_Index1():
     ]
     return render_template('mspr_Index.html', menu_simple_items=menu_simple_items)
 
-@app.route('/mspr_Index2')
-def mspr_Index2():
+@app.route('/mspr_sub_Index')
+def mspr_sub_Index():
     return render_template('mspr_index2.html', menu_sub_items=menu_sub_items)
 
 @app.route('/mspr_Index3')
 def mspr_Index3():
     return render_template('mspr_index3.html', menu_items=menu_items)
 
-@app.route('/mspr_Index')
-def mspr_Index4():
+@app.route('/mspr_DropList_Index')
+def mspr_DropList_Index():
     return render_template('mspr_Index_Dropdown_list.html', menu_items=menu_items)
 
 @app.route('/list')
