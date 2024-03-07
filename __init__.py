@@ -484,7 +484,7 @@ menu_items = [
     {
         'name': 'Livreur',
         'url': '/mspr_Livreur'
-    }
+    },
     {
         'name': 'About',
         'url': '/mspr_About'
