@@ -473,8 +473,8 @@ menu_items = [
     {
         'name': 'Client',
         'url': '#',
-        #'listbox': [
-        'sub_menu': [
+        #'sub_menu': [
+        'listbox': [
             {'name': 'Consultation', 'url': '/mspr_Consulter_Client'},
             {'name': 'Recherche', 'url': '/mspr_Chercher_Client'},
             # Add more sub-menu items as needed
