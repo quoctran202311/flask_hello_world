@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Flask App{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_menu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <!-- Login Panel -->
+    <div class="login-panel">
+        {% if current_user.is_authenticated %}
+            <p>Welcome, {{ current_user.username }}!</p>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        {% else %}
+            <form action="{{ url_for('login') }}" method="post">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <input type="submit" value="Login">
+            </form>
+        {% endif %}
+    </div>
+
+    <!-- Navigation Menu -->
     <ul class="navmenu">
         <li><a href="/">Home</a></li>
         <li class="dropdown">
