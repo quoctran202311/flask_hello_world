@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Flask App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles_menu.css') }}">
+</head>
+<body>
+    <ul class="navmenu">
+        <li><a href="/">Home</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Dropdown</a>
+            <div class="dropdown-content">
+                <a href="#">Submenu 1</a>
+                <a href="#">Submenu 2</a>
+                <a href="#">Submenu 3</a>
+            </div>
+        </li>
+        <!-- Add more list items with dropdowns as needed -->
+    </ul>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
