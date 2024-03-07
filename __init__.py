@@ -513,6 +513,10 @@ def mspr_Index3():
 def mspr_Index4():
     return render_template('mspr_index4.html', menu_items=menu_items)
 
+@app.route('/list')
+def index_list():
+    return render_template('list.html')
+
 @app.route('/mspr_About')
 def mspr_About():
     return render_template('mspr_About.html')
