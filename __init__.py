@@ -492,7 +492,7 @@ menu_items = [
 ]
 
 # Simple menu with sub-menu
-menu_items_sub-menu = [
+menu_items_sub = [
     {'name': 'Home', 'url': '/mspr_Index'},
     {
         'name': 'Client',
