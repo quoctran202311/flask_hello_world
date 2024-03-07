@@ -3,22 +3,12 @@ from flask import Flask, render_template, request, redirect
 from flask import json
 from urllib.request import urlopen
 import sqlite3
-from flask.ext.login import LoginManager
-#from Flask_Login import LoginManager, login_user, logout_user, login_required
-from user import User, users
 
+# # Flask for MSPR
 
 app = Flask(__name__)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions (à cacher par la suite)
-
-login_manager = LoginManager()
-login_manager.init_app(app)
-
-@login_manager.user_loader
-def load_user(user_id):
-    return users.get(int(user_id))
-
 
 # # Intro - Flask
 
@@ -564,8 +554,8 @@ users = {
     'user2': 'password2'
 }
 
-@app.route('/logintest', methods=['POST'])
-def logintest():
+@app.route('/login_test', methods=['POST'])
+def login_test():
     username = request.form['username']
     password = request.form['password']
 
@@ -596,7 +586,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('html_index'))
 
 if __name__ == "__main__":
   app.run(debug=True)
