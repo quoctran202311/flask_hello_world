@@ -571,6 +571,11 @@ def login_test():
 def dashboard(username):
     return render_template('dashboard.html', username=username)
 
+@app.route('/protected')
+# @login_required
+def protected():
+    return "This is a protected page. Only logged-in users can access this."
+
 
 if __name__ == "__main__":
   app.run(debug=True)
