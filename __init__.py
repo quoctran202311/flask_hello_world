@@ -466,24 +466,24 @@ def login():
 def dashboard(username):
     return render_template('dashboard.html', username=username)
 
+# menu-dropdown-list_items
 menu-dropdown-list_items = [
     {'name': 'Home', 'url': '/'},
-    {'name': 'About', 'url': '/about'},
     {
         'name': 'Client',
         'url': '#',
         'sub_menu': [
             {
-                'name': 'Service 1',
+                'name': 'Info',
                 'url': '#',
                 'listbox': [
-                    {'name': 'Option 1', 'value': 'option1'},
-                    {'name': 'Option 2', 'value': 'option2'},
+                    {'name': 'Consultation', 'value': 'Consultation'},
+                    {'name': 'Recherche', 'value': 'option2'},
                     # Add more listbox options as needed
                 ]
             },
             {
-                'name': 'Service 2',
+                'name': 'Mise à jour',
                 'url': '#',
                 'listbox': [
                     {'name': 'Option A', 'value': 'optionA'},
@@ -502,12 +502,12 @@ menu-dropdown-list_items = [
 ]
 
 # Simple menu with sub-menu
-menu_items = [
+menu_items_sub_menu = [
     {'name': 'Home', 'url': '/mspr_Index'},
     {
         'name': 'Client',
         'url': '#',
-        'sub_menu': [
+        'listbox': [
             {'name': 'Consultation', 'url': '/mspr_Consulter_Client'},
             {'name': 'Recherche', 'url': '/mspr_Chercher_Client'},
             # Add more sub-menu items as needed
@@ -534,9 +534,13 @@ def mspr_Index():
     #]
     return render_template('mspr_Index.html', menu_items=menu_items)
 
-@app.route('/mspr_Index')
+@app.route('/mspr_Index2')
 def mspr_Index2():
     return render_template('mspr_index2.html', menu_items=menu_items)
+
+@app.route('/mspr_Index')
+def mspr_Index2():
+    return render_template('mspr_index3.html', menu_items=menu_items)
 
 @app.route('/mspr_About')
 def mspr_About():
