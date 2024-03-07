@@ -492,7 +492,7 @@ menu_items = [
 ]
 
 # Simple menu with sub-menu
-menu_items_sub = [
+menu_sub_items = [
     {'name': 'Home', 'url': '/mspr_Index'},
     {
         'name': 'Client',
@@ -514,7 +514,7 @@ menu_items_sub = [
 # Simple menu
 @app.route('/mspr_Index1')
 def mspr_Index1():
-    menu_items = [
+    menu_simple_items = [
         {'name': 'Home', 'url': '/mspr_Index1'},
         {'name': 'Client', 'url': '/mspr_Client'},
         {'name': 'Livreur', 'url': '/mspr_Livreur'},
