@@ -523,11 +523,11 @@ def mspr_Index1():
         {'name': 'About', 'url': '/mspr_About'},
         # Add more menu items as needed
     ]
-    return render_template('mspr_Index.html', menu_items=menu_items)
+    return render_template('mspr_Index.html', menu_simple_items=menu_simple_items)
 
 @app.route('/mspr_Index2')
 def mspr_Index2():
-    return render_template('mspr_index2.html', menu_items=menu_items)
+    return render_template('mspr_index2.html', menu_sub_items=menu_sub_items)
 
 @app.route('/mspr_Index3')
 def mspr_Index3():
