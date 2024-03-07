@@ -566,5 +566,9 @@ def mspr_Commande():
     return render_template('mspr_Commande.html')
     #return redirect('/mspr_Consulter_Commande')
 
+@app.route('/html_index')
+def html_index():
+    return render_template('html_menu.html')
+    
 if __name__ == "__main__":
   app.run(debug=True)
