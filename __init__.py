@@ -4,10 +4,20 @@ from flask import json
 from urllib.request import urlopen
 import sqlite3
 
+from flask_login import LoginManager, login_user, logout_user, login_required
+from user import User, users
+
 
 app = Flask(__name__)
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'  # Clé secrète pour les sessions (à cacher par la suite)
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return users.get(int(user_id))
 
 
 # # Intro - Flask
@@ -444,29 +454,6 @@ def d_mspr_Ajouter_Produit():
     return render_template('mspr_Ajouter_Produit.html')
 
 
-# Dummy user credentials (to be replaced with actual user database)
-users = {
-    'user1': 'password1',
-    'user2': 'password2'
-}
-
-@app.route('/login', methods=['POST'])
-def login():
-    username = request.form['username']
-    password = request.form['password']
-
-    # Check if the username exists and the password matches
-    if username in users and users[username] == password:
-        # Successful login
-        return redirect(url_for('dashboard', username=username))
-    else:
-        # Failed login
-        return render_template('login.html', message='Invalid username or password')
-
-@app.route('/dashboard/<username>')
-def dashboard(username):
-    return render_template('dashboard.html', username=username)
-
 
 # Simple menu
 @app.route('/mspr_Index1')
@@ -570,6 +557,46 @@ def mspr_Commande():
 @app.route('/html_index')
 def html_index():
     return render_template('html_menu.html')
-    
+
+# Dummy user credentials (to be replaced with actual user database)
+users = {
+    'user1': 'password1',
+    'user2': 'password2'
+}
+
+@app.route('/logintest', methods=['POST'])
+def logintest():
+    username = request.form['username']
+    password = request.form['password']
+
+    # Check if the username exists and the password matches
+    if username in users and users[username] == password:
+        # Successful login
+        return redirect(url_for('dashboard', username=username))
+    else:
+        # Failed login
+        return render_template('login.html', message='Invalid username or password')
+
+@app.route('/dashboard/<username>')
+def dashboard(username):
+    return render_template('dashboard.html', username=username)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        user_id = int(request.form['user_id'])
+        if user_id in users:
+            user = users[user_id]
+            login_user(user)
+            return redirect(url_for('index'))
+    return render_template('login.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
 if __name__ == "__main__":
   app.run(debug=True)
