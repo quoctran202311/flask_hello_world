@@ -563,7 +563,8 @@ def login():
     if username in users and users[username] == password:
         # Successful login
         # return redirect(url_for('dashboard', username=username))
-        return redirect(url_for('dashboard'))
+        # return redirect(url_for('dashboard'))
+        return redirect('/mspr_sub_Index')
     else:
         # Failed login
         return render_template('login.html', message='Invalid username or password')
