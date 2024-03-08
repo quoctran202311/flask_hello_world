@@ -561,19 +561,11 @@ def login():
 
     # Check if the username exists and the password matches
     if username in users and users[username] == password:
-        # Successful login
-        # return redirect(url_for('dashboard', username=username))
-        # return redirect(url_for('dashboard'))
+        # Successful login - Go to main menu
         return redirect('/mspr_sub_Index')
     else:
         # Failed login
         return render_template('login.html', message='Invalid username or password')
-
-# @app.route('/dashboard/<username>')
-@app.route('/dashboard')
-def dashboard():
-    # return render_template('dashboard.html', username=username)
-    return render_template('dashboard.html')
 
 
 if __name__ == "__main__":
