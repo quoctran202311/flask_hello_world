@@ -562,7 +562,8 @@ def login():
     # Check if the username exists and the password matches
     if username in users and users[username] == password:
         # Successful login
-        return redirect(url_for('dashboard', username=username))
+        # return redirect(url_for('dashboard', username=username))
+        return redirect(url_for('dashboard'))
     else:
         # Failed login
         return render_template('login.html', message='Invalid username or password')
