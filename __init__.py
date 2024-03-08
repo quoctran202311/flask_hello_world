@@ -570,7 +570,8 @@ def login():
 # @app.route('/dashboard/<username>')
 @app.route('/dashboard')
 def dashboard():
-    return render_template('dashboard.html', username=username)
+    # return render_template('dashboard.html', username=username)
+    return render_template('dashboard.html')
 
 @app.route('/protected')
 # @login_required
